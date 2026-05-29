@@ -3,14 +3,18 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import LinkButton from "../components/LinkButton.astro";
 import links from "../lib/links";
+import FeatureTile from "../components/FeatureTile.astro";
+import cn from "../lib/cn";
+import ExplanationTile from "../components/ExplanationTile.astro";
 
 const year = new Date().getFullYear();
 ---
 
 <Layout>
-	<div class="h-screen flex flex-col items-center gap-6 grid-texture">
+	<div class="min-h-screen flex flex-col items-center gap-6 grid-texture">
 		<Navbar />
-		<div class="flex flex-col items-center gap-2 text-center mt-20 mx-8">
+
+		<div class="flex flex-col items-center gap-2 text-center mt-30 mx-8">
 			<h1 class="font-brand text-3xl font-light max-w-[750px]">
 				A modern self-hosting experience for Minecraft
 			</h1>
@@ -19,22 +23,69 @@ const year = new Date().getFullYear();
 				server host for Minecraft Java and Bedrock.
 			</p>
 		</div>
+
 		<div class="flex flex-row items-center gap-2">
 			<LinkButton href={links.github} level="primary">View on GitHub</LinkButton
 			>
 			<LinkButton href={links.discord}>Join the Discord</LinkButton>
 		</div>
-	</div>
-	<!-- <div
-		class="h-screen flex flex-col items-start gap-6 max-w-800 m-8 rounded-lg p-8 bg-surface"
-	>
-		<h2 class="font-brand text-2xl font-light">
-			Why another hosting software?
-		</h2>
-	</div> -->
-	<div class="bg-background h-24 flex flex-col p-4 items-center gap-2">
-		<span class="text-sm font-brand">&copy; {year} ScaffoldMC Contributors</span
+
+		<h2 class="text-center font-light mt-30">Features</h2>
+		<div
+			class={cn(
+				"h-full p-8 gap-6",
+				"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+			)}
 		>
+			<FeatureTile title="Console Access">
+				Access your server's console and send commands directly from the web
+				interface.
+			</FeatureTile>
+			<FeatureTile title="Version Management">
+				Change your game or mod loader version in just a few clicks. No more
+				hunting the internet for the correct jar.
+			</FeatureTile>
+			<FeatureTile title="Smart Binary Management">
+				Centralized binary management reduces disk usage by sharing server jars
+				across multiple servers.
+			</FeatureTile>
+			<FeatureTile
+				title="Automatic JVM Detection"
+				subtext="(Partially implemented)"
+			>
+				ScaffoldMC automatically detects your installed Java versions and allows
+				configuring JVM on a per-server basis.
+			</FeatureTile>
+			<FeatureTile title="Mod Management" subtext="(Planned)">
+				Download and manage mods for your server directly from the panel with
+				integration to popular modding repositories like Modrinth.
+			</FeatureTile>
+			<FeatureTile title="Server Backups" subtext="(Planned)">
+				Backup your server on demand or on a schedule.
+			</FeatureTile>
+		</div>
+	</div>
+
+	<div
+		class="h-full flex flex-row flex-wrap items-start justify-between align-center gap-4 max-w-800 p-8 bg-surface"
+	>
+		<ExplanationTile title="What?">
+			ScaffoldMC is a management panel for self-hosting Minecraft servers. It
+			provides an interface for creating and managing Minecraft servers, aiming
+			to support both the Java and Bedrock editions of the game.
+		</ExplanationTile>
+		<ExplanationTile title="Why?">
+			Compared to third-party Minecraft launchers, existing server panels lack
+			the features and polish that server owners deserve. ScaffoldMC is being
+			built with user-friendliness in mind to get players out of the panel and
+			into the game.
+		</ExplanationTile>
+	</div>
+
+	<div class="bg-background h-24 flex flex-col p-4 items-center gap-2">
+		<span class="text-sm font-brand">
+			&copy; {year} ScaffoldMC Contributors
+		</span>
 		<span class="text-xs text-text-secondary font-light">
 			Minecraft is a trademark of Mojang AB. ScaffoldMC is not affiliated with
 			or endorsed by Mojang or Microsoft.
