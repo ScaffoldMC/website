@@ -1,8 +1,26 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import LinkButton from "../components/LinkButton.astro";
+import links from "../lib/links";
 ---
 
 <Layout>
-	<Welcome />
+	<div class="h-screen flex flex-col items-center gap-6">
+		<Navbar />
+		<div class="flex flex-col items-center gap-2 text-center mt-20 mx-8">
+			<h1 class="font-brand text-3xl font-light max-w-[750px]">
+				A modern self-hosting experience for Minecraft
+			</h1>
+			<p class="font-sans max-w-[500px] font-light text-text-secondary">
+				ScaffoldMC is being built from the ground up as the next generation
+				server host for Minecraft Java and Bedrock.
+			</p>
+		</div>
+		<div class="flex flex-row items-center gap-2">
+			<LinkButton href={links.github} level="primary">View on GitHub</LinkButton
+			>
+			<LinkButton href={links.discord}>Join the Discord</LinkButton>
+		</div>
+	</div>
 </Layout>

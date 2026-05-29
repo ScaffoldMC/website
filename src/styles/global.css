@@ -18,7 +18,11 @@
 
 :root {
 	/* Brand colors */
+	--color-brand-lightest: #fffce6;
+	--color-brand-light: #fff280;
 	--color-brand: #f8df00;
+	--color-brand-dark: #ccb800;
+	--color-brand-darkest: #807300;
 	--color-accent-lightest: #d0f5f0;
 	--color-accent-light: #7fe0d4;
 	--color-accent-base: #00b4a0;
@@ -37,20 +41,9 @@
 	--color-text-primary: #d6ebec;
 	--color-text-secondary: #7aacb0;
 	--color-text-tertiary: #4a7478;
-
-	/* Surface colors */
-	/*--color-background: #edf4f4;
-	--color-surface: #f7fafa;
-	--color-surface-raised: #ffffff;
-	--color-surface-overlay: #e4eeee;
-	--color-border-static: #c8dcdc;
-	--color-border-hover: #8bbfc4;
-	--color-border-active: var(--color-accent-base);*/
-
-	/* Text colors */
-	/*--color-text-primary: #172224;
-	--color-text-secondary: #3a7a82;
-	--color-text-tertiary: #8bbfc4;*/
+	--color-text-dark-primary: #172224;
+	--color-text-dark-secondary: #3a7a82;
+	--color-text-dark-tertiary: #8bbfc4;
 
 	background-color: var(--color-background);
 	color: var(--color-text-primary);
@@ -58,27 +51,16 @@
 	font-size: 18px;
 }
 
-/*@media (prefers-color-scheme: dark) {
-	:root {
-		--color-background: #0e1618;
-		--color-surface: #172224;
-		--color-surface-raised: #1e2c2f;
-		--color-surface-overlay: #253538;
-		--color-border-static: #2a3e42;
-		--color-border-hover: #3a5458;
-
-		--color-text-primary: #d6ebec;
-		--color-text-secondary: #7aacb0;
-		--color-text-tertiary: #4a7478;
-	}
-}*/
-
 @theme inline {
 	--font-sans: "Open Sans", sans-serif;
 	--font-brand: "Manrope", sans-serif;
 
 	/* Brand colors */
+	--color-brand-lightest: var(--color-brand-lightest);
+	--color-brand-light: var(--color-brand-light);
 	--color-brand: var(--color-brand);
+	--color-brand-dark: var(--color-brand-dark);
+	--color-brand-darkest: var(--color-brand-darkest);
 	--color-accent-lightest: var(--color-accent-lightest);
 	--color-accent-light: var(--color-accent-light);
 	--color-accent-base: var(--color-accent-base);
@@ -98,6 +80,9 @@
 	--color-text-primary: var(--color-text-primary);
 	--color-text-secondary: var(--color-text-secondary);
 	--color-text-tertiary: var(--color-text-tertiary);
+	--color-text-dark-primary: var(--color-text-dark-primary);
+	--color-text-dark-secondary: var(--color-text-dark-secondary);
+	--color-text-dark-tertiary: var(--color-text-dark-tertiary);
 }
 
 @layer base {
@@ -119,4 +104,15 @@
 	h6 {
 		@apply text-sm font-medium;
 	}
+}
+
+/*============================== Common Classes ==============================*/
+
+.grid-texture {
+	background-size: 40px 40px;
+	background-image: radial-gradient(
+		circle,
+		var(--color-accent-darkest) 1px,
+		var(--color-background) 1px
+	);
 }
