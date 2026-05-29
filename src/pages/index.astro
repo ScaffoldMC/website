@@ -3,10 +3,12 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import LinkButton from "../components/LinkButton.astro";
 import links from "../lib/links";
+
+const year = new Date().getFullYear();
 ---
 
 <Layout>
-	<div class="h-screen flex flex-col items-center gap-6">
+	<div class="h-screen flex flex-col items-center gap-6 grid-texture">
 		<Navbar />
 		<div class="flex flex-col items-center gap-2 text-center mt-20 mx-8">
 			<h1 class="font-brand text-3xl font-light max-w-[750px]">
@@ -22,5 +24,20 @@ import links from "../lib/links";
 			>
 			<LinkButton href={links.discord}>Join the Discord</LinkButton>
 		</div>
+	</div>
+	<!-- <div
+		class="h-screen flex flex-col items-start gap-6 max-w-800 m-8 rounded-lg p-8 bg-surface"
+	>
+		<h2 class="font-brand text-2xl font-light">
+			Why another hosting software?
+		</h2>
+	</div> -->
+	<div class="bg-background h-24 flex flex-col p-4 items-center gap-2">
+		<span class="text-sm font-brand">&copy; {year} ScaffoldMC Contributors</span
+		>
+		<span class="text-xs text-text-secondary font-light">
+			Minecraft is a trademark of Mojang AB. ScaffoldMC is not affiliated with
+			or endorsed by Mojang or Microsoft.
+		</span>
 	</div>
 </Layout>
