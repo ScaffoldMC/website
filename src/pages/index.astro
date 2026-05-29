@@ -6,15 +6,16 @@ import links from "../lib/links";
 import FeatureTile from "../components/FeatureTile.astro";
 import cn from "../lib/cn";
 import ExplanationTile from "../components/ExplanationTile.astro";
-
-const year = new Date().getFullYear();
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
 	<div class="min-h-screen flex flex-col items-center gap-6 grid-texture">
 		<Navbar />
 
-		<div class="flex flex-col items-center gap-2 text-center mt-30 mx-8">
+		<div
+			class="flex flex-col items-center gap-2 text-center justify-center mx-8 h-[55vh]"
+		>
 			<h1 class="font-brand text-3xl font-light max-w-[750px]">
 				A modern self-hosting experience for Minecraft
 			</h1>
@@ -22,37 +23,51 @@ const year = new Date().getFullYear();
 				ScaffoldMC is being built from the ground up as the next generation
 				server host for Minecraft Java and Bedrock.
 			</p>
+
+			<div class="flex flex-row items-center gap-2 mt-4">
+				<LinkButton href={links.github} level="primary"
+					>View on GitHub</LinkButton
+				>
+				<LinkButton href={links.discord}>Join the Discord</LinkButton>
+			</div>
 		</div>
 
-		<div class="flex flex-row items-center gap-2">
-			<LinkButton href={links.github} level="primary">View on GitHub</LinkButton
-			>
-			<LinkButton href={links.discord}>Join the Discord</LinkButton>
+		<div
+			class="h-full flex flex-row flex-wrap items-start justify-between align-center gap-4 max-w-800 p-8 bg-surface"
+		>
+			<ExplanationTile title="What?">
+				ScaffoldMC is a self-hosted web panel for creating and managing your
+				Minecraft servers. If you want to host servers without the hosting fees
+				or configuration headaches, this is for you! We aim to support both the
+				Java and Bedrock editions of the game by release.
+			</ExplanationTile>
+			<ExplanationTile title="Why?">
+				Existing server panels lack the polish and ecosystem integration that
+				server owners deserve. We're building ScaffoldMC with user-friendliness
+				in mind to make hosting Minecraft servers on your own hardware as easy
+				as possible.
+			</ExplanationTile>
 		</div>
 
-		<h2 class="text-center font-light mt-30">Features</h2>
+		<h2 class="text-center font-light my-2">Features</h2>
 		<div
 			class={cn(
-				"h-full p-8 gap-6",
+				"h-full px-8 gap-6 pb-8",
 				"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
 			)}
 		>
-			<FeatureTile title="Console Access">
+			<FeatureTile title="Live Server Console">
 				Access your server's console and send commands directly from the web
 				interface.
 			</FeatureTile>
 			<FeatureTile title="Version Management">
-				Change your game or mod loader version in just a few clicks. No more
-				hunting the internet for the correct jar.
+				Change your game or mod loader version in just a few clicks.
 			</FeatureTile>
 			<FeatureTile title="Smart Binary Management">
-				Centralized binary management reduces disk usage by sharing server jars
-				across multiple servers.
+				Centralized management of server binaries reduces disk usage by sharing
+				them across multiple servers.
 			</FeatureTile>
-			<FeatureTile
-				title="Automatic JVM Detection"
-				subtext="(Partially implemented)"
-			>
+			<FeatureTile title="Automatic JVM Detection" subtext="(WIP)">
 				ScaffoldMC automatically detects your installed Java versions and allows
 				configuring JVM on a per-server basis.
 			</FeatureTile>
@@ -64,31 +79,19 @@ const year = new Date().getFullYear();
 				Backup your server on demand or on a schedule.
 			</FeatureTile>
 		</div>
-	</div>
 
-	<div
-		class="h-full flex flex-row flex-wrap items-start justify-between align-center gap-4 max-w-800 p-8 bg-surface"
-	>
-		<ExplanationTile title="What?">
-			ScaffoldMC is a management panel for self-hosting Minecraft servers. It
-			provides an interface for creating and managing Minecraft servers, aiming
-			to support both the Java and Bedrock editions of the game.
-		</ExplanationTile>
-		<ExplanationTile title="Why?">
-			Compared to third-party Minecraft launchers, existing server panels lack
-			the features and polish that server owners deserve. ScaffoldMC is being
-			built with user-friendliness in mind to get players out of the panel and
-			into the game.
-		</ExplanationTile>
-	</div>
+		<div class="my-4">
+			<h2 class="text-center font-light">Get Involved</h2>
+			<p
+				class="text-center text-text-secondary max-w-[750px] mx-auto mb-4 font-light"
+			>
+				ScaffoldMC is an open source project and contributions are welcome! That
+				being said, the project is currently solo-developed, so please reach out
+				on the <a href={links.discord} class="underline">Discord Server</a> before
+				starting any work so we can align our efforts.
+			</p>
+		</div>
 
-	<div class="bg-background h-24 flex flex-col p-4 items-center gap-2">
-		<span class="text-sm font-brand">
-			&copy; {year} ScaffoldMC Contributors
-		</span>
-		<span class="text-xs text-text-secondary font-light">
-			Minecraft is a trademark of Mojang AB. ScaffoldMC is not affiliated with
-			or endorsed by Mojang or Microsoft.
-		</span>
+		<Footer />
 	</div>
 </Layout>
